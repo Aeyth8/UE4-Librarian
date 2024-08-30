@@ -6,6 +6,8 @@ This DLL works with Unreal Engine 4.0 - 4.27.2 / But it also works with other ve
 
 It's as simple as placing the 'dxgi.dll' into your game's binaries, opening the configuration page 'DList.ini' and setting the DLL Names and their corresponding timer.
 
+# Currently Unfinished
+It just needs a small fix and a couple changes and it will be ready for use!
 
 # Credit
 Now I will give credit where it's due, **Illusory/ASMRGaming** originally created this project and code, but he discontinued going the open source route and ended up going into the closed-off scumbag gatekeeper routine, making his special little "Mod Unlocker" both closed source, and locked behind a paywall. 
