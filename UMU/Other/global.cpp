@@ -17,17 +17,17 @@ namespace Global
     std::string DLL9 = "Null";
     std::string DLL10 = "Null";
     //Set 11 Global Ints for timers ALSO ------>
-    int Timer0 = 0;
-    int Timer1 = 0;
-    int Timer2 = 0;
-    int Timer3 = 0;
-    int Timer4 = 0;
-    int Timer5 = 0;
-    int Timer6 = 0;
-    int Timer7 = 0;
-    int Timer8 = 0;
-    int Timer9 = 0;
-    int Timer10 = 0;
+    int Timer0 = 4; // By default the timers are 4 seconds, this is because the DLL runs BY LAUNCH, meaning that any DLL attempting to load itself by launch is just going to fail, 4 seconds is the sweet spot.
+    int Timer1 = 4;
+    int Timer2 = 4;
+    int Timer3 = 4;
+    int Timer4 = 4;
+    int Timer5 = 4;
+    int Timer6 = 4;
+    int Timer7 = 4;
+    int Timer8 = 4;
+    int Timer9 = 4;
+    int Timer10 = 4;
     //Set 11 Global Booleans for if they were successfully loaded ------>
     bool Library0 = false;
     bool Library1 = false;

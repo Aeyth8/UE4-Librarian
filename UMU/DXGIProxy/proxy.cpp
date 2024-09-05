@@ -229,6 +229,8 @@ std::wstring Convertion(const std::string& narrowStr) {
 	return DLLName;
 }
 
+std::wstring Failed = L" has failed to load:\n\n\n Press 'OK' to play the game without this DLL.\n\n Press 'CANCEL' to close the game.";
+
 // These are all separate threads to ensure that they are all properly timed and only work within themselves without affecting the other threads
 void AttachDLL0() {
 	std::wstring DLLName = Convertion(Global::DLL0); //Converts the DLLName from a normal string to a wide string using the 'Convertion' function
@@ -236,7 +238,7 @@ void AttachDLL0() {
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1); // I'm going to be honest I have no clue what this does, I just know that I need it in order to work.
 	Bonkers = LoadLibraryW(DLLPath); // Bonkers is a bool, and it will attempt to load the library (inject the custom DLL)
 	if (!Bonkers) { // If the Bonkers bool ends up returning false, then it runs this error code, which pops up giving you the choice to continue without the DLL or to close the game.
-		std::wstring DoubleTime = L"'" + DLLName + L"'" + L" has failed to load, would you like to continue or close the game?"; // DoubleTime is the variable to make this entire message into just one variable, which is placed into the MessageBox, since MessageBoxes will not be able to do this themselves.
+		std::wstring DoubleTime = L"'" + DLLName + L"'" + Failed; // DoubleTime is the variable to make this entire message into just one variable, which is placed into the MessageBox, since MessageBoxes will not be able to do this themselves.
 		const int result = MessageBox(NULL, DoubleTime.c_str(), L"! ERROR !", MB_OKCANCEL | MB_SYSTEMMODAL);
 		switch (result)
 		{
@@ -258,7 +260,7 @@ void AttachDLL1() {
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
-		std::wstring DoubleTime = L"'" + DLLName + L"'" + L" has failed to load, would you like to continue or close the game?";
+		std::wstring DoubleTime = L"'" + DLLName + L"'" + Failed;
 		const int result = MessageBox(NULL, DoubleTime.c_str(), L"!ERROR!", MB_OKCANCEL | MB_SYSTEMMODAL);
 		switch (result)
 		{
@@ -280,7 +282,7 @@ void AttachDLL2() {
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
-		std::wstring DoubleTime = L"'" + DLLName + L"'" + L" has failed to load, would you like to continue or close the game?";
+		std::wstring DoubleTime = L"'" + DLLName + L"'" + Failed;
 		const int result = MessageBox(NULL, DoubleTime.c_str(), L"!ERROR!", MB_OKCANCEL | MB_SYSTEMMODAL);
 		switch (result)
 		{
@@ -302,7 +304,7 @@ void AttachDLL3() {
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
-		std::wstring DoubleTime = L"'" + DLLName + L"'" + L" has failed to load, would you like to continue or close the game?";
+		std::wstring DoubleTime = L"'" + DLLName + L"'" + Failed;
 		const int result = MessageBox(NULL, DoubleTime.c_str(), L"!ERROR!", MB_OKCANCEL | MB_SYSTEMMODAL);
 		switch (result)
 		{
@@ -324,7 +326,7 @@ void AttachDLL4() {
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
-		std::wstring DoubleTime = L"'" + DLLName + L"'" + L" has failed to load, would you like to continue or close the game?";
+		std::wstring DoubleTime = L"'" + DLLName + L"'" + Failed;
 		const int result = MessageBox(NULL, DoubleTime.c_str(), L"!ERROR!", MB_OKCANCEL | MB_SYSTEMMODAL);
 		switch (result)
 		{
@@ -346,7 +348,7 @@ void AttachDLL5() {
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
-		std::wstring DoubleTime = L"'" + DLLName + L"'" + L" has failed to load, would you like to continue or close the game?";
+		std::wstring DoubleTime = L"'" + DLLName + L"'" + Failed;
 		const int result = MessageBox(NULL, DoubleTime.c_str(), L"!ERROR!", MB_OKCANCEL | MB_SYSTEMMODAL);
 		switch (result)
 		{
@@ -368,7 +370,7 @@ void AttachDLL6() {
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
-		std::wstring DoubleTime = L"'" + DLLName + L"'" + L" has failed to load, would you like to continue or close the game?";
+		std::wstring DoubleTime = L"'" + DLLName + L"'" + Failed;
 		const int result = MessageBox(NULL, DoubleTime.c_str(), L"!ERROR!", MB_OKCANCEL | MB_SYSTEMMODAL);
 		switch (result)
 		{
@@ -390,7 +392,7 @@ void AttachDLL7() {
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
-		std::wstring DoubleTime = L"'" + DLLName + L"'" + L" has failed to load, would you like to continue or close the game?";
+		std::wstring DoubleTime = L"'" + DLLName + L"'" + Failed;
 		const int result = MessageBox(NULL, DoubleTime.c_str(), L"!ERROR!", MB_OKCANCEL | MB_SYSTEMMODAL);
 		switch (result)
 		{
@@ -412,7 +414,7 @@ void AttachDLL8() {
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
-		std::wstring DoubleTime = L"'" + DLLName + L"'" + L" has failed to load, would you like to continue or close the game?";
+		std::wstring DoubleTime = L"'" + DLLName + L"'" + Failed;
 		const int result = MessageBox(NULL, DoubleTime.c_str(), L"!ERROR!", MB_OKCANCEL | MB_SYSTEMMODAL);
 		switch (result)
 		{
@@ -434,7 +436,7 @@ void AttachDLL9() {
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
-		std::wstring DoubleTime = L"'" + DLLName + L"'" + L" has failed to load, would you like to continue or close the game?";
+		std::wstring DoubleTime = L"'" + DLLName + L"'" + Failed;
 		const int result = MessageBox(NULL, DoubleTime.c_str(), L"!ERROR!", MB_OKCANCEL | MB_SYSTEMMODAL);
 		switch (result)
 		{
@@ -456,7 +458,7 @@ void AttachDLL10() {
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
-		std::wstring DoubleTime = L"'" + DLLName + L"'" + L" has failed to load, would you like to continue or close the game?";
+		std::wstring DoubleTime = L"'" + DLLName + L"'" + Failed;
 		const int result = MessageBox(NULL, DoubleTime.c_str(), L"!ERROR!", MB_OKCANCEL | MB_SYSTEMMODAL);
 		switch (result)
 		{
