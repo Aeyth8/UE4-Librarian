@@ -233,8 +233,8 @@ std::wstring Failed = L" has failed to load:\n\n\n Press 'OK' to play the game w
 
 // These are all separate threads to ensure that they are all properly timed and only work within themselves without affecting the other threads
 void AttachDLL0() {
-	std::wstring DLLName = Convertion(Global::DLL0); //Converts the DLLName from a normal string to a wide string using the 'Convertion' function
-	Sleep(Global::Timer0 * 1000); // Sleeps for the amount of seconds you set in the timer via DList.ini, if you didn't set a timer then it will not sleep at all and will inject immediately, which is likely to cause a crash or fail entirely. Don't set a timer at 0, I'd recommend 4 seconds minimum.
+	std::wstring DLLName = Convertion(DLL0); //Converts the DLLName from a normal string to a wide string using the 'Convertion' function
+	Sleep(Timer0 * 1000); // Sleeps for the amount of seconds you set in the timer via DList.ini, if you didn't set a timer then it will not sleep at all and will inject immediately, which is likely to cause a crash or fail entirely. Don't set a timer at 0, I'd recommend 4 seconds minimum.
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1); // I'm going to be honest I have no clue what this does, I just know that I need it in order to work.
 	Bonkers = LoadLibraryW(DLLPath); // Bonkers is a bool, and it will attempt to load the library (inject the custom DLL)
 	if (!Bonkers) { // If the Bonkers bool ends up returning false, then it runs this error code, which pops up giving you the choice to continue without the DLL or to close the game.
@@ -250,13 +250,13 @@ void AttachDLL0() {
 		}
 	}
 	if (Bonkers) {
-		Global::Library0 = true;
+		Library0 = true;
 
 	}
 }
 void AttachDLL1() {
-	std::wstring DLLName = Convertion(Global::DLL1);
-	Sleep(Global::Timer1 * 1000);
+	std::wstring DLLName = Convertion(DLL1);
+	Sleep(Timer1 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
@@ -272,13 +272,13 @@ void AttachDLL1() {
 		}
 	}
 	if (Bonkers) {
-		Global::Library1 = true;
+		Library1 = true;
 
 	}
 }
 void AttachDLL2() {
-	std::wstring DLLName = Convertion(Global::DLL2);
-	Sleep(Global::Timer2 * 1000);
+	std::wstring DLLName = Convertion(DLL2);
+	Sleep(Timer2 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
@@ -294,13 +294,13 @@ void AttachDLL2() {
 		}
 	}
 	if (Bonkers) {
-		Global::Library2 = true;
+		Library2 = true;
 
 	}
 }
 void AttachDLL3() {
-	std::wstring DLLName = Convertion(Global::DLL3);
-	Sleep(Global::Timer3 * 1000);
+	std::wstring DLLName = Convertion(DLL3);
+	Sleep(Timer3 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
@@ -316,13 +316,13 @@ void AttachDLL3() {
 		}
 	}
 	if (Bonkers) {
-		Global::Library3 = true;
+		Library3 = true;
 
 	}
 }
 void AttachDLL4() {
-	std::wstring DLLName = Convertion(Global::DLL4);
-	Sleep(Global::Timer4 * 1000);
+	std::wstring DLLName = Convertion(DLL4);
+	Sleep(Timer4 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
@@ -338,13 +338,13 @@ void AttachDLL4() {
 		}
 	}
 	if (Bonkers) {
-		Global::Library4 = true;
+		Library4 = true;
 
 	}
 }
 void AttachDLL5() {
-	std::wstring DLLName = Convertion(Global::DLL5);
-	Sleep(Global::Timer5 * 1000);
+	std::wstring DLLName = Convertion(DLL5);
+	Sleep(Timer5 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
@@ -360,13 +360,13 @@ void AttachDLL5() {
 		}
 	}
 	if (Bonkers) {
-		Global::Library5 = true;
+		Library5 = true;
 
 	}
 }
 void AttachDLL6() {
-	std::wstring DLLName = Convertion(Global::DLL6);
-	Sleep(Global::Timer6 * 1000);
+	std::wstring DLLName = Convertion(DLL6);
+	Sleep(Timer6 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
@@ -382,13 +382,13 @@ void AttachDLL6() {
 		}
 	}
 	if (Bonkers) {
-		Global::Library6 = true;
+		Library6 = true;
 
 	}
 }
 void AttachDLL7() {
-	std::wstring DLLName = Convertion(Global::DLL7);
-	Sleep(Global::Timer7 * 1000);
+	std::wstring DLLName = Convertion(DLL7);
+	Sleep(Timer7 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
@@ -404,13 +404,13 @@ void AttachDLL7() {
 		}
 	}
 	if (Bonkers) {
-		Global::Library7 = true;
+		Library7 = true;
 
 	}
 }
 void AttachDLL8() {
-	std::wstring DLLName = Convertion(Global::DLL8);
-	Sleep(Global::Timer8 * 1000);
+	std::wstring DLLName = Convertion(DLL8);
+	Sleep(Timer8 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
@@ -426,13 +426,13 @@ void AttachDLL8() {
 		}
 	}
 	if (Bonkers) {
-		Global::Library8 = true;
+		Library8 = true;
 
 	}
 }
 void AttachDLL9() {
-	std::wstring DLLName = Convertion(Global::DLL9);
-	Sleep(Global::Timer9 * 1000);
+	std::wstring DLLName = Convertion(DLL9);
+	Sleep(Timer9 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
@@ -448,13 +448,13 @@ void AttachDLL9() {
 		}
 	}
 	if (Bonkers) {
-		Global::Library9 = true;
+		Library9 = true;
 
 	}
 }
 void AttachDLL10() {
-	std::wstring DLLName = Convertion(Global::DLL10);
-	Sleep(Global::Timer10 * 1000);
+	std::wstring DLLName = Convertion(DLL10);
+	Sleep(Timer10 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
 	Bonkers = LoadLibraryW(DLLPath);
 	if (!Bonkers) {
@@ -470,7 +470,7 @@ void AttachDLL10() {
 		}
 	}
 	if (Bonkers) {
-		Global::Library10 = true;
+		Library10 = true;
 
 	}
 }

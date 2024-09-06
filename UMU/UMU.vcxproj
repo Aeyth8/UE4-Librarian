@@ -160,6 +160,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Debugger\Debugger.h" />
+    <ClInclude Include="Parsing\parsing.h" />
+    <ClInclude Include="Threads\Threads.h" />
     <ClInclude Include="UMUClasses\SigScanner\SigScannerProfiles\DefaultSigScanProfile.h" />
     <ClInclude Include="UMUClasses\SigScanner\SigScannerProfiles\FindPakSigScanProfile.h" />
     <ClInclude Include="UMUClasses\FunctionHooks\LooseFileLoadingHooks.h" />
@@ -180,7 +183,10 @@
     <ClInclude Include="Tools\util.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Debugger\Debugger.cpp" />
     <ClCompile Include="Other\global.cpp" />
+    <ClCompile Include="Parsing\parsing.cpp" />
+    <ClCompile Include="Threads\Threads.cpp" />
     <ClCompile Include="UMUClasses\SigScanner\SigScannerProfiles\DefaultSigScanProfile.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="UMUClasses\SigScanner\SigScannerProfiles\FindPakSigScanProfile.cpp" />

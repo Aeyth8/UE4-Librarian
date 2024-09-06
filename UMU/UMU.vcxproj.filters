@@ -76,6 +76,24 @@
     <Filter Include="Header Files\UMUClasses\SigScanner\SigScanners">
       <UniqueIdentifier>{44b1f4f6-4220-4127-a91d-2f8813510499}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Parsing">
+      <UniqueIdentifier>{1b386a39-84a2-432a-875a-8774844eea8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Parsing">
+      <UniqueIdentifier>{8a0a374e-4be9-4787-92a0-a815e9d06b04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Debugger">
+      <UniqueIdentifier>{b328a0ec-cb16-415d-a8fa-b79e8198615b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Debugger">
+      <UniqueIdentifier>{a4b9cdc2-0049-4967-a215-659c47fc02fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Threads">
+      <UniqueIdentifier>{594e0f59-7513-4e03-9f39-6894091aa853}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Threads">
+      <UniqueIdentifier>{b10a62ee-b889-4485-afb5-32e8b67b678d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MinHook\hde\hde32.h">
@@ -132,6 +150,15 @@
     <ClInclude Include="UMUClasses\SigScanner\SigScanners\SigScanner_LooseFileLoader.h">
       <Filter>Header Files\UMUClasses\SigScanner\SigScanners</Filter>
     </ClInclude>
+    <ClInclude Include="Debugger\Debugger.h">
+      <Filter>Source Files\Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="Threads\Threads.h">
+      <Filter>Header Files\Threads</Filter>
+    </ClInclude>
+    <ClInclude Include="Parsing\parsing.h">
+      <Filter>Header Files\Parsing</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -172,6 +199,15 @@
     </ClCompile>
     <ClCompile Include="Other\global.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Debugger\Debugger.cpp">
+      <Filter>Header Files\Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="Threads\Threads.cpp">
+      <Filter>Source Files\Threads</Filter>
+    </ClCompile>
+    <ClCompile Include="Parsing\parsing.cpp">
+      <Filter>Source Files\Parsing</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
