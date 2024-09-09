@@ -7,12 +7,7 @@
 #include <algorithm>
 #include "../Other/global.h"
 #include "../DXGIProxy/proxy.h"
-#include "fstream"
-#include "string"
-#include <chrono>
 
-//bool Initialized = false;
-//std::string Timestamped;
 
 std::string RetrieveTime() {
 	auto now = std::chrono::system_clock::now();
@@ -23,13 +18,13 @@ std::string RetrieveTime() {
 	if (!Initialized) {
 		Initialized = true;
 		std::stringstream Timestamped;
-		Timestamped << std::put_time(&now_tm, "%Y/%m/%d %H:%M:%S %p");
+		Timestamped << std::put_time(&now_tm, "%m/%d/%Y %H:%M:%S %p");
 
 		return Timestamped.str();
 	}
 	else {
 		std::stringstream Timestamp;
-		Timestamp << std::put_time(&now_tm, "%Y/%m/%d %H:%M:%S %p");
+		Timestamp << std::put_time(&now_tm, "%m/%d/%Y %H:%M:%S %p");
 
 		return Timestamp.str();
 	}

@@ -8,6 +8,7 @@
 #include "../Other/global.h"
 #include "../DXGIProxy/proxy.h"
 #include "../Debugger/Debugger.h"
+#include "../Threads/Threads.h"
 #include "fstream"
 #include "string"
 
@@ -30,7 +31,7 @@ void WSOD(std::string key, std::string value, int errortype) {
 		}
 	}
 	else if (errortype == 1) {
-		const std::wstring ErrorMessage = DLLName + L" was not found within your binaries.\n\nPlease make sure that:\n\n 1: You placed it in the proper folder, which is found within\n 'YourGameName/YourGameName/Binaries/Win64'\n\n 2: You properly typed the name of the DLL.\n\n (If you do not want to use this DLL, please remove it from 'DList.ini')";
+		const std::wstring ErrorMessage = DLLName + L" was not found within your binaries.\n\nPlease make sure that:\n\n 1: You placed it in the proper folder, which is found within\n " + Directory_Str + DLLName + L"\n\n 2: You properly typed the name of the DLL.\n\n (If you do not want to use this DLL, please remove it from 'DList.ini')";
 		const int result = MessageBox(NULL, ErrorMessage.c_str(), L"! File Integrity Failed !", MB_OK | MB_SYSTEMMODAL);
 		switch (result)
 		{
@@ -101,31 +102,24 @@ void Initialize() {
 	GetModuleFileName(NULL, EXEPath, MAX_PATH);
 
 	std::wstring DirectoryPath(EXEPath);
-	GBA = uintptr_t(GetModuleHandleW(NULL));
 	size_t EndDL = DirectoryPath.find_last_of(L"\\/");
-
+	std::wstring ShippingEXE;
 
 	if (EndDL != std::wstring::npos) {
 		// Remove the filename part to get the directory path
 		DirectoryPath = DirectoryPath.substr(0, EndDL + 1); // Keep the backslash
+		ShippingEXE = EXEPath + EndDL + 1;
 	}
 
+	GBA = uintptr_t(GetModuleHandleW(ShippingEXE.c_str()));
 	INI_Path = DirectoryPath + L"DList.ini";
 	LOG_Path = DirectoryPath + L"UE4-Librarian.log";
+	Directory_Str = DirectoryPath;
 
 	InitLog(LOG_Path);
-	DebugLog("INFO", "The Global Base Address [GBA] is " + std::to_string(GBA) + "\n\n");
+	DebugLog("INFO", Revertion(ShippingEXE));
+	DebugLog("INFO", "The Global Base Address [GBA] is " + std::to_string(GBA));
 	Set_Vars(INI_Path);
-	
-	/*std::ifstream ini(INI_Path);
-	std::ifstream log(LOG_Path);
-	if (!ini.good()) {
-
-	}
-	if (!log.good()) {
-
-	}*/
-
 }
 
 //It attempts to read a .ini file within the binaries directory named "DList.ini", if it is unable to find this file, it creates one.
@@ -212,6 +206,7 @@ void Set_Vars(const std::wstring& Path) {
 				}
 			}
 			// This is both inefficient, boring, and psychological torture ; PS - At the time of writing this I have been up for almost 24 hours straight :(
+			// I am replying to my past self a few weeks later, I think this is the most efficient version that I could come up with for this, atleast with my current understanding of C++, which is small.
 			if (currentSection == "DLL") {
 				if (key == "DLL0" && IsValidDLL(value, key)) {
 					DLL0 = value;
@@ -295,8 +290,9 @@ void Set_Vars(const std::wstring& Path) {
 			}
 		}
 	}
-	int Highest_Value = (std::max)({ Timer0, Timer1, Timer2, Timer3, Timer4, Timer5, Timer6, Timer7, Timer8, Timer9, Timer10 });
+	int Highest_Value = (std::max)({ Timer0, Timer1, Timer2, Timer3, Timer4, Timer5, Timer6, Timer7, Timer8, Timer9, Timer10 }); // Finds the highest value of all timers and adds it to Hourglass (which is equal to 1), this is used for hook failure. 
 	Hourglass += Highest_Value;
+	Thread_Creator();
 }
 
 

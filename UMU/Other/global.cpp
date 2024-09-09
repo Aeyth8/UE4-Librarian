@@ -1,4 +1,4 @@
-#include "Global.h"
+#include "global.h"
 
 
 // Set an extremely important Global Boolean with a stupid name ------>
@@ -11,6 +11,7 @@ std::string Timestamped; // Timestamp set immediately during DLL entry
 std::string Timestamp; // Timestamp sets each time a message in the debug log has been sent
 std::wstring INI_Path;
 std::wstring LOG_Path;
+std::wstring Directory_Str;
 
 //Set 11 Global Strings for DLLs simply because I don't know the easier way and I'm too tired ------>
 std::string DLL0 = "Null";
@@ -72,30 +73,16 @@ std::wstring LoadedLibraries = L"";
 int Hourglass = 1;
 int LibraryCt = 0;
 
-/*const std::wstring INIPath = DirectoryPath + L"DList.ini";
-const std::wstring LogPath = DirectoryPath + L"UE4-Librarian.log";
+// Converts a normal string into a wide string
+std::wstring Convertion(const std::string& narrowStr) {
+    std::wstring DLLName;
+    DLLName.assign(narrowStr.begin(), narrowStr.end());
+    return DLLName;
+}
 
-WCHAR EXEPath[MAX_PATH] = { 0 };
-std::wstring DirectoryPath(EXEPath);
-size_t EndDL = DirectoryPath.find_last_of(L"\\/");
-bool FileIntegrity(int File) {
-
-    std::wstring Files[] = { INIPath, LogPath };
-    GetModuleFileName(NULL, EXEPath, MAX_PATH);
-    if (EndDL == std::wstring::npos) {
-        return false;
-    }
-    // Remove the filename part to get the directory path
-    DirectoryPath = DirectoryPath.substr(0, EndDL + 1); // Keep the backslash
-
-
-    std::ifstream infile(Files[File]);
-    if (!infile.good()) {
-        return false;
-    }
-    else {
-        infile.close();
-    }
-   
-    return true;
-}*/
+// Converts a wide string into a normal string
+std::string Revertion(const std::wstring& wideStr) {
+    std::string WideString;
+    WideString.assign(wideStr.begin(), wideStr.end());
+    return WideString;
+}

@@ -3,7 +3,17 @@
 #include <string>
 #include <Psapi.h>
 #include <fstream>
+#include <stdlib.h>
+#include <thread>
+#include <chrono>
+#include <stdio.h>
+#include <algorithm>
+#include <iostream>
+#include <shellapi.h>
+#include <stdint.h>
 
+
+#include "../stdafx.h"
 
 namespace Global
 {
@@ -17,6 +27,7 @@ extern std::string Timestamped;
 extern std::string Timestamp;
 extern std::wstring INI_Path;
 extern std::wstring LOG_Path;
+extern std::wstring Directory_Str;
 extern std::string DLL0;
 extern std::string DLL1;
 extern std::string DLL2;
@@ -69,6 +80,9 @@ extern bool BypassIF;
 extern std::wstring LoadedLibraries;
 extern int Hourglass;
 extern int LibraryCt;
+
+extern std::wstring Convertion(const std::string& narrowStr);
+extern std::string Revertion(const std::wstring& wideStr);
 
 /*extern WCHAR EXEPath[MAX_PATH];
 extern std::wstring DirectoryPath;
