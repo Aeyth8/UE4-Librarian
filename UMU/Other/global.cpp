@@ -1,9 +1,6 @@
 #include "global.h"
 
 
-// Set an extremely important Global Boolean with a stupid name ------>
-bool BingoBongo = false;
-
 // Debugging Variables ------>
 bool Initialized = false;
 uintptr_t GBA = 0; // Global Base Address (GBA)

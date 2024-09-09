@@ -20,7 +20,6 @@ namespace Global
 	static DWORD_PTR BaseAddress;
 	static MODULEINFO info;
 }
-extern bool BingoBongo;
 extern bool Initialized;
 extern uintptr_t GBA;
 extern std::string Timestamped;
