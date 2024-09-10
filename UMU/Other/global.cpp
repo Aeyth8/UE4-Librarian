@@ -8,6 +8,7 @@ std::string Timestamped; // Timestamp set immediately during DLL entry
 std::string Timestamp; // Timestamp sets each time a message in the debug log has been sent
 std::wstring INI_Path;
 std::wstring LOG_Path;
+std::wstring COUNTER_Path;
 std::wstring Directory_Str;
 
 //Set 11 Global Strings for DLLs simply because I don't know the easier way and I'm too tired ------>

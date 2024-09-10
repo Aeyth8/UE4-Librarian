@@ -26,6 +26,7 @@ extern std::string Timestamped;
 extern std::string Timestamp;
 extern std::wstring INI_Path;
 extern std::wstring LOG_Path;
+extern std::wstring COUNTER_Path;
 extern std::wstring Directory_Str;
 extern std::string DLL0;
 extern std::string DLL1;

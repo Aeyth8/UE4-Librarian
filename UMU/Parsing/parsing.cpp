@@ -26,6 +26,7 @@ void WSOD(std::string key, std::string value, int errortype) {
 		case IDOK:
 			break;
 		case IDCANCEL:
+			User_Exit("[WSOD] (errortype == 0) / " + Revertion(DLLNum) + "=" + Revertion(DLLName));
 			abort();
 			break;
 		}
@@ -36,6 +37,7 @@ void WSOD(std::string key, std::string value, int errortype) {
 		switch (result)
 		{
 		case IDOK:
+			User_Exit("[WSOD] (errortype 1) / " + Revertion(DLLName));
 			abort();
 			break;
 		}
@@ -45,42 +47,47 @@ void WSOD(std::string key, std::string value, int errortype) {
 bool IsValidDLL(const std::string& value, const std::string& key) {
 	std::string DLL_Template_Name = "PutYourDLLHere.dll";
 	std::string ProperExtension = "dll";
-	WCHAR X64[MAX_PATH] = { 0 };
+	std::wstring X64 = Directory_Str + Convertion(value);
 	auto File_Extension_Dot = value.rfind('.');
 
 	if (value == DLL_Template_Name || value.empty() || std::all_of(value.begin(), value.end(), ::isspace)) {
+		DebugLog("IsValidDLL", key + " | FALSE | Error Type: EMPTY");
 		return false;
 	}
 
 	if (File_Extension_Dot == std::string::npos) {
+		DebugLog("IsValidDLL", key + " | FALSE | Error Type: MISSING EXTENSION");
 		WSOD(key, value, 0);
 		return false;
 	}
 	std::string Extracted_Extension = value.substr(File_Extension_Dot + 1);
 
 	if (Extracted_Extension != ProperExtension) {
+		DebugLog("IsValidDLL", key + " | FALSE | Error Type: INVALID EXTENSION");
 		if (!BypassSE) {
 			WSOD(key, value, 0);
 		}
 		return false;
 	}
-	wcsncpy_s(X64, (Convertion(value)).c_str(), _countof(X64) - 1);
 
-	if (GetFileAttributesW(X64) == INVALID_FILE_ATTRIBUTES) {
+	if (GetFileAttributesW(X64.c_str()) == INVALID_FILE_ATTRIBUTES) {
+		DebugLog("IsValidDLL", key + " | FALSE | Error Type: INVALID_FILE_ATTRIBUTES / NOT FOUND");
 		if (!BypassIF) {
 			WSOD(key, value, 1);
 		}
 		return false;
 	}
 
+	DebugLog("IsValidDLL", key + " | VALID | " + value);
 	return true;
 }
 
-bool IsValidTimer(const std::string& value) {
+bool IsValidTimer(const std::string& value, const std::string& key) {
 	std::string Timer_Template_Name = "JustPutANumberInSeconds";
 	int Testing = 0;
 
 	if (value == Timer_Template_Name || value.empty() || std::all_of(value.begin(), value.end(), ::isspace)) {
+		DebugLog("IsValidTimer", key + " | FALSE | Error Type: EMPTY");
 		return false;
 	}
 
@@ -89,9 +96,11 @@ bool IsValidTimer(const std::string& value) {
 	}
 
 	catch (const std::exception& e) {
+		DebugLog("IsValidTimer", key + " | FALSE | Error Type: FAILED STRING CONVERTION");
 		return false;
 	}
 
+	DebugLog("IsValidTimer", key + " | VALID | " + std::to_string(Testing) + "s");
 	return true;
 }
 
@@ -114,6 +123,7 @@ void Initialize() {
 	GBA = uintptr_t(GetModuleHandleW(ShippingEXE.c_str()));
 	INI_Path = DirectoryPath + L"DList.ini";
 	LOG_Path = DirectoryPath + L"UE4-Librarian.log";
+	COUNTER_Path = DirectoryPath + L"CountdownTester.log";
 	Directory_Str = DirectoryPath;
 
 	InitLog(LOG_Path);
@@ -160,6 +170,7 @@ void Set_Vars(const std::wstring& Path) {
 		switch (result)
 		{
 		case IDOK:
+			User_Exit("[Set_Vars] DList.ini not found, a new one has been constructed.");
 			abort();
 			break;
 		}
@@ -254,37 +265,37 @@ void Set_Vars(const std::wstring& Path) {
 				}
 			}
 			if (currentSection == "Timer") {
-				if (key == "Timer0" && D0 && IsValidTimer(value)) {
+				if (key == "Timer0" && D0 && IsValidTimer(value, key)) {
 					Timer0 = std::stoi(value);
 				}
-				if (key == "Timer1" && D1 && IsValidTimer(value)) {
+				if (key == "Timer1" && D1 && IsValidTimer(value, key)) {
 					Timer1 = std::stoi(value);
 				}
-				if (key == "Timer2" && D2 && IsValidTimer(value)) {
+				if (key == "Timer2" && D2 && IsValidTimer(value, key)) {
 					Timer2 = std::stoi(value);
 				}
-				if (key == "Timer3" && D3 && IsValidTimer(value)) {
+				if (key == "Timer3" && D3 && IsValidTimer(value, key)) {
 					Timer3 = std::stoi(value);
 				}
-				if (key == "Timer4" && D4 && IsValidTimer(value)) {
+				if (key == "Timer4" && D4 && IsValidTimer(value, key)) {
 					Timer4 = std::stoi(value);
 				}
-				if (key == "Timer5" && D5 && IsValidTimer(value)) {
+				if (key == "Timer5" && D5 && IsValidTimer(value, key)) {
 					Timer5 = std::stoi(value);
 				}
-				if (key == "Timer6" && D6 && IsValidTimer(value)) {
+				if (key == "Timer6" && D6 && IsValidTimer(value, key)) {
 					Timer6 = std::stoi(value);
 				}
-				if (key == "Timer7" && D7 && IsValidTimer(value)) {
+				if (key == "Timer7" && D7 && IsValidTimer(value, key)) {
 					Timer7 = std::stoi(value);
 				}
-				if (key == "Timer8" && D8 && IsValidTimer(value)) {
+				if (key == "Timer8" && D8 && IsValidTimer(value, key)) {
 					Timer8 = std::stoi(value);
 				}
-				if (key == "Timer9" && D9 && IsValidTimer(value)) {
+				if (key == "Timer9" && D9 && IsValidTimer(value, key)) {
 					Timer9 = std::stoi(value);
 				}
-				if (key == "Timer10" && D10 && IsValidTimer(value)) {
+				if (key == "Timer10" && D10 && IsValidTimer(value, key)) {
 					Timer10 = std::stoi(value);
 				}
 			}
