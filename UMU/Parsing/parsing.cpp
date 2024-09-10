@@ -126,6 +126,7 @@ void Initialize() {
 	COUNTER_Path = DirectoryPath + L"CountdownTester.log";
 	Directory_Str = DirectoryPath;
 
+	InitCounter(COUNTER_Path);
 	InitLog(LOG_Path);
 	DebugLog("INFO", Revertion(ShippingEXE));
 	DebugLog("INFO", "The Global Base Address [GBA] is " + std::to_string(GBA));
