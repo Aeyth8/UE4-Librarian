@@ -11,6 +11,7 @@
 #include <iostream>
 #include <shellapi.h>
 #include <stdint.h>
+#include <sstream>
 
 
 #include "../stdafx.h"
@@ -28,6 +29,19 @@ extern std::wstring INI_Path;
 extern std::wstring LOG_Path;
 extern std::wstring COUNTER_Path;
 extern std::wstring Directory_Str;
+
+extern bool Live_Clock;
+extern bool Military_Time;
+
+extern bool Separate_Values;
+extern std::string G_Year;
+extern std::string G_Month;
+extern std::string G_Day;
+extern std::string G_Hour;
+extern std::string G_Minute;
+extern std::string G_Second;
+extern std::string Full_Date;
+
 extern std::string DLL0;
 extern std::string DLL1;
 extern std::string DLL2;
@@ -39,6 +53,7 @@ extern std::string DLL7;
 extern std::string DLL8;
 extern std::string DLL9;
 extern std::string DLL10;
+
 extern int Timer0;
 extern int Timer1;
 extern int Timer2;
@@ -50,6 +65,7 @@ extern int Timer7;
 extern int Timer8;
 extern int Timer9;
 extern int Timer10;
+
 extern bool Library0;
 extern bool Library1;
 extern bool Library2;

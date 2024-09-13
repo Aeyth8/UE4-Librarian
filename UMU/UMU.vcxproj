@@ -160,6 +160,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Clock\Clock.h" />
+    <ClInclude Include="Clock_P.h" />
     <ClInclude Include="Debugger\Debugger.h" />
     <ClInclude Include="Parsing\parsing.h" />
     <ClInclude Include="Threads\Threads.h" />
@@ -183,6 +185,7 @@
     <ClInclude Include="Tools\util.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Clock\Clock.cpp" />
     <ClCompile Include="Debugger\Debugger.cpp" />
     <ClCompile Include="Other\global.cpp" />
     <ClCompile Include="Parsing\parsing.cpp" />

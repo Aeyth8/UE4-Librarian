@@ -94,6 +94,12 @@
     <Filter Include="Source Files\Threads">
       <UniqueIdentifier>{b10a62ee-b889-4485-afb5-32e8b67b678d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Clock">
+      <UniqueIdentifier>{9fc8f604-5e19-4f0e-af75-4d261b2ad78b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Clock">
+      <UniqueIdentifier>{1bc30704-0dc2-40f9-817b-7b2ef5797db0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MinHook\hde\hde32.h">
@@ -159,6 +165,12 @@
     <ClInclude Include="Parsing\parsing.h">
       <Filter>Header Files\Parsing</Filter>
     </ClInclude>
+    <ClInclude Include="Clock\Clock.h">
+      <Filter>Header Files\Clock</Filter>
+    </ClInclude>
+    <ClInclude Include="Clock_P.h">
+      <Filter>Header Files\Clock</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -208,6 +220,9 @@
     </ClCompile>
     <ClCompile Include="Parsing\parsing.cpp">
       <Filter>Source Files\Parsing</Filter>
+    </ClCompile>
+    <ClCompile Include="Clock\Clock.cpp">
+      <Filter>Source Files\Clock</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,8 @@
 #include "Debugger.h"
 #include "../Other/global.h"
+#include "../Clock_P.h"
 
-std::string FullTime;
+/*std::string FullTime;
 int Month;
 int Day;
 int Year;
@@ -14,7 +15,7 @@ int Second;
 std::string Meridiem;
 std::string FHour;
 std::string FMinute;
-std::string FSecond;
+std::string FSecond;*/
 
 std::string RetrieveTime() { // Retrieves the current time into a permanent stamp, then after initialized places the current time into a constantly changed variable.
 	auto now = std::chrono::system_clock::now();
@@ -36,7 +37,7 @@ std::string RetrieveTime() { // Retrieves the current time into a permanent stam
 		return Timestamp.str();
 	}
 }
-void CounterLogger(std::string Time);
+/*void CounterLogger(std::string Time);
 void Real_Time_Clock() { // Theoretical function, not actually being used anywhere and isn't callable globally unless defined in the header.
 	Sleep(10 * 1000);
 	auto now = std::chrono::system_clock::now();
@@ -182,16 +183,15 @@ void Real_Time_Clock() { // Theoretical function, not actually being used anywhe
 		printf(FullTime.c_str());
 		CounterLogger(FullTime);
 	}
-}
+}*/
 
-void InitCounter(const std::wstring& Path) {
-	HANDLE hThread = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)Real_Time_Clock, nullptr, 0, 0);
+/*void InitCounter(const std::wstring& Path) {
+	HANDLE hThread = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)Clock_M::InitClock, nullptr, 0, 0);
 	if (hThread != nullptr)
 		CloseHandle(hThread);
 	std::ofstream Log(Path);
-	Log << FullTime;
 	Log.close();
-}
+}*/
 
 void CounterLogger(std::string Time) {
 	std::ofstream Log(COUNTER_Path, std::ios::app);
@@ -212,7 +212,7 @@ void DebugLog(std::string LogType, std::string Text) {
 }
 
 void User_Exit(const std::string error) {
-	DebugLog("EXIT", "Closing application due to user input.\REASON: " + error);
+	DebugLog("EXIT", "Closing application due to user input. REASON: " + error);
 	// 'error' shows the name of the function that the MessageBox appeared in.
 }
 
@@ -227,3 +227,7 @@ void User_Exit(const std::string error) {
 // These contain all traces of experimental code being executed by runtime.
 
 // ALSO MAKE SURE YOU ADD A FUNCTION TO CLOSE DEBUG LOG, IT MAY SEEM POINTLESS BUT IT MAY CRASH IF CLOSED AT THE EXACT MOMENT.
+
+// ADD A INI OPTION FOR 24 HOUR TIME OR 12 HOUR.
+
+// PS if you have a problem check to see IsValidDLL where you changed it to constants (Which to my understanding is correct but I could end up wrong)

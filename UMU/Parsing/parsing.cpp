@@ -11,6 +11,7 @@
 #include "../Threads/Threads.h"
 #include "fstream"
 #include "string"
+#include "../Clock_P.h"
 
 
 
@@ -45,8 +46,8 @@ void WSOD(std::string key, std::string value, int errortype) {
 }
 
 bool IsValidDLL(const std::string& value, const std::string& key) {
-	std::string DLL_Template_Name = "PutYourDLLHere.dll";
-	std::string ProperExtension = "dll";
+	const std::string DLL_Template_Name = "PutYourDLLHere.dll";
+	const std::string ProperExtension = "dll";
 	std::wstring X64 = Directory_Str + Convertion(value);
 	auto File_Extension_Dot = value.rfind('.');
 
@@ -126,7 +127,7 @@ void Initialize() {
 	COUNTER_Path = DirectoryPath + L"CountdownTester.log";
 	Directory_Str = DirectoryPath;
 
-	InitCounter(COUNTER_Path);
+	Clock_M::InitClock();
 	InitLog(LOG_Path);
 	DebugLog("INFO", Revertion(ShippingEXE));
 	DebugLog("INFO", "The Global Base Address [GBA] is " + std::to_string(GBA));
