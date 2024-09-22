@@ -4,3 +4,8 @@ UE4L/x64/Release/*
 UE4L/x64/Debug/*
 UE4L/.vs/*
 x64/Release/*
+UE4L/UE4L.vcxproj/*
+UE4L/UE4L.vcxproj.filters/*
+UE4L/UE4L.vcxproj.user/*
+UE4L/UE4L.user/*
+UE4L/UE4L.filters/*
