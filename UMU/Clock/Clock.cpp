@@ -8,6 +8,11 @@
 
 namespace Clock_M {
 
+	int Power_Level[] = { Second, Minute, Hour };
+	bool Prefixes[] = { Pre_Second, Pre_Minute, Pre_Hour, Pre_Day, Pre_Month };
+	bool Pre_Clocks[] = { Pre_Month, Pre_Day, Pre_Hour, Pre_Minute, Pre_Second };
+	int Clocks[] = { Month, Day, Hour, Minute, Second };
+
 	void InitCounter() {
 		std::ofstream Log(COUNTER_Path);
 		Log.close();
@@ -29,13 +34,14 @@ namespace Clock_M {
 		return TS;
 	}
 
-	std::string Prefix(const int Value) {
-		bool Prefixes[] = { Pre_Second, Pre_Minute, Pre_Hour, Pre_Day, Pre_Month };
+	std::string Prefix(int Value) {
+		//bool Prefixes[] = { Pre_Second, Pre_Minute, Pre_Hour, Pre_Day, Pre_Month };
 		std::string ReturnValue = (Value < 10 ? "0" : "");
 		return ReturnValue;
 	}
 
-	int Last_Day(const int& Month) { // Of The Month
+	// Of The Month
+	int Last_Day(const int& Month) { 
 		int Months[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 		if (Is_Leap_Year(Year)) {
 			Months[1] = 29;
@@ -46,18 +52,20 @@ namespace Clock_M {
 	}
 
 	void Reset_Int(int Power, bool Clock) {
-		int Power_Level[] = { Second, Minute, Hour};
-		if (!Clock) {
-			Power_Level[0] = Day;
-			Power_Level[1] = Month;
-			Power_Level[2] = Year;
-		}
-		for (int i = 0; i < (Power + 1); ++i) {
-			Power_Level[i] = ((Clock) ? 0 : 1);
+		Clock = (Clock ? (Power_Level[0] = Second, Power_Level[1] = Minute, Power_Level[2] = Hour) : (Power_Level[0] = Day, Power_Level[1] = Month, Power_Level[2] = Year));
+		for (int i = 0; i < Power; ++i) {
+			Power_Level[i] = (Clock ? 0 : 1);
+			printf((std::to_string(Power) + " - Power_Level | Clock = " + (Clock ? "True" : "False") + "\n\n\n").c_str());
 		}
 	}
 	
 	void Tick() {
+		Prefixes[0] = Pre_Second, Prefixes[1] = Pre_Minute, Prefixes[2] = Pre_Hour, Prefixes[3] = Pre_Day, Prefixes[4] = Pre_Month;
+		Pre_Clocks[0] = Pre_Month, Pre_Clocks[1] = Pre_Day, Pre_Clocks[2] = Pre_Hour, Pre_Clocks[3] = Pre_Minute, Pre_Clocks[4] = Pre_Second;
+		Clocks[0] = Month, Clocks[1] = Day, Clocks[2] = Hour, Clocks[3] = Minute, Clocks[4] = Second;
+		CounterLogger("Prefixes: " + std::to_string(Pre_Second) + std::to_string(Pre_Minute) + std::to_string(Pre_Hour) + std::to_string(Pre_Day) + std::to_string(Pre_Month));
+		CounterLogger("Pre_Clocks: " + std::to_string(Pre_Month) + std::to_string(Pre_Day) + std::to_string(Pre_Hour) + std::to_string(Pre_Minute) + std::to_string(Pre_Second));
+		CounterLogger("Clocks: " + std::to_string(Month) + std::to_string(Day) + std::to_string(Hour) + std::to_string(Minute) + std::to_string(Second));
 		Sleep(1 * 1000);
 	}
 
@@ -90,8 +98,8 @@ namespace Clock_M {
 		Minute = std::stoi(Stream::Minute.str());
 		Second = std::stoi(Stream::Second.str());
 
-		bool Pre_Clocks[] = {Pre_Month, Pre_Day, Pre_Hour, Pre_Minute, Pre_Second };
-		int Clocks[] = { Month, Day, Hour, Minute, Second };
+		Pre_Clocks[0] = Pre_Month, Pre_Clocks[1] = Pre_Day, Pre_Clocks[2] = Pre_Hour, Pre_Clocks[3] = Pre_Minute, Pre_Clocks[4] = Pre_Second;
+		Clocks[0] = Month, Clocks[1] = Day, Clocks[2] = Hour, Clocks[3] = Minute, Clocks[4] = Second;
 
 		for (int i = 0; i < 4; ++i) {
 			if (Clocks[i] < 10) {
@@ -123,8 +131,8 @@ namespace Clock_M {
 
 		std::string S = "/";
 		std::string C = ":";
-		bool Pre_Clocks[] = { Pre_Month, Pre_Day, Pre_Hour, Pre_Minute, Pre_Second };
-		int Clocks[] = { Month, Day, Hour, Minute, Second };
+		//bool Pre_Clocks[] = { Pre_Month, Pre_Day, Pre_Hour, Pre_Minute, Pre_Second };
+		//int Clocks[] = { Month, Day, Hour, Minute, Second };
 
 		while (true) {
 
@@ -166,8 +174,8 @@ namespace Clock_M {
 				Tick();
 			}
 
-			for (int i = 0; i < 6; ++i) {
-				if (Clocks[i] < 10) {
+			for (int i = 0; i < 4; ++i) {
+				if (Clocks[4] < 10) {
 					Pre_Clocks[i] = true;
 				}
 			}
