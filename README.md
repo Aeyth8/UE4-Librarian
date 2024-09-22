@@ -7,13 +7,13 @@ This DLL works with Unreal Engine 4.0 - 4.27.2 / But it also works with other ve
 It's as simple as placing the 'dxgi.dll' into your game's binaries, opening the configuration page 'DList.ini' and setting the DLL Names and their corresponding timer.
 
 # Currently Unfinished
-It just needs a small fix and a couple changes and it will be ready for use!
+It's finished, but I want to polish it up before counting it as a full release, if you want to use it now you can, you'll have to compile it from source.
+By release I plan to remove the UMU hooks altogether, I don't need them and they're only in the way.
+
+You can use this as a DXGI Proxy, or a XInput Proxy. 
+You'll have to rename it to to dxgi.dll or xinput1_3.dll
 
 # Credit
-Now I will give credit where it's due, **Illusory/ASMRGaming** originally created this project and code, but he discontinued going the open source route and ended up going into the closed-off scumbag gatekeeper routine, making his special little "Mod Unlocker" both closed source, and locked behind a paywall. 
+Now I will give credit where it's due, **Illusory/ASMRGaming** originally created the proxy code, but nothing else.
 
-Now I don't really know the guy much, but I've had a personal encounter with him that's made me grow unfond of him (and I actually used to have respect for the guy). 
-
-*(no idea if he made the whole thing or just parts of it, I don't know and I don't care)*
-
-~~Oops I forgor to fork~~ ~~https://github.com/IllusorySoftware/UnrealModUnlocker-Public~~
+[UMU](https://github.com/IllusorySoftware/UnrealModUnlocker-Public)
