@@ -1,5 +1,6 @@
 .vs/*
-UMU/Release/*
-UMU/x64/Release/*
-UMU/x64/Debug/*
+UE4L/Release/*
+UE4L/x64/Release/*
+UE4L/x64/Debug/*
+UE4L/.vs/*
 x64/Release/*
