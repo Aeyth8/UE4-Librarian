@@ -118,10 +118,10 @@ void Initialize() {
 	GBA = uintptr_t(GetModuleHandleW(ShippingEXE.c_str()));
 	INI_Path = DirectoryPath + L"DList.ini";
 	LOG_Path = DirectoryPath + L"UE4-Librarian.log";
-	//COUNTER_Path = DirectoryPath + L"CountdownTester.log";
+	COUNTER_Path = DirectoryPath + L"CountdownTester.log";
 	Directory_Str = DirectoryPath;
 
-	//Clock_M::InitClock();
+	Clock_M::InitClock();
 	InitLog(LOG_Path);
 	DebugLog("INFO", Revertion(ShippingEXE));
 	DebugLog("INFO", "The Global Base Address [GBA] is " + std::to_string(GBA));

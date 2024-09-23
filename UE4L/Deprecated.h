@@ -240,6 +240,17 @@ void Set_Vars(const std::wstring& Path) {
 	Thread_Creator();
 }
 
+//------> Clock.cpp
+
+void Reset_Int(int Power, bool Clock) {
+		Clock = (Clock ? (Power_Level[0] = Second, Power_Level[1] = Minute, Power_Level[2] = Hour) : (Power_Level[0] = Day, Power_Level[1] = Month, Power_Level[2] = Year));
+		for (int i = 0; i < Power; ++i) {
+			Power_Level[i] = (Clock ? 0 : 1);
+			printf((std::to_string(Power) + " - Power_Level | Clock = " + (Clock ? "True" : "False") + "\n\n\n").c_str());
+		}
+	}
+
+
 */
 
 

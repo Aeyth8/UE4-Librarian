@@ -3,7 +3,6 @@
 #include "../Debugger/Debugger.h"
 
 typedef void(WINAPI* StartThread)();
-HMODULE Bonkers = NULL;
 WCHAR DLLPath[MAX_PATH] = { 0 };
 
 const std::wstring Failed = L" has failed to load:\n\n\n Press 'OK' to play the game without this DLL.\n\n Press 'CANCEL' to close the game.";
@@ -40,6 +39,7 @@ DWORD WINAPI LoadLibraries(int Lib) {
 
 // These are all separate threads to ensure that they are all properly timed and only work within themselves without affecting the other threads
 void AttachDLL0() {
+	bool Bonkers = false;
 	std::wstring DLLName = Convertion(DLL0); //Converts the DLLName from a normal string to a wide string using the 'Convertion' function
 	Sleep(Timer0 * 1000); // Sleeps for the amount of seconds you set in the timer via DList.ini, if you didn't set a timer then it will not sleep at all and will inject immediately, which is likely to cause a crash or fail entirely. Don't set a timer at 0, I'd recommend 4 seconds minimum.
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1); // Something something appends DLLName to the path
@@ -54,6 +54,7 @@ void AttachDLL0() {
 }
 
 void AttachDLL1() {
+	bool Bonkers = false;
 	std::wstring DLLName = Convertion(DLL1);
 	Sleep(Timer1 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
@@ -68,6 +69,7 @@ void AttachDLL1() {
 }
 
 void AttachDLL2() {
+	bool Bonkers = false;
 	std::wstring DLLName = Convertion(DLL2);
 	Sleep(Timer2 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
@@ -82,6 +84,7 @@ void AttachDLL2() {
 }
 
 void AttachDLL3() {
+	bool Bonkers = false;
 	std::wstring DLLName = Convertion(DLL3);
 	Sleep(Timer3 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
@@ -96,6 +99,7 @@ void AttachDLL3() {
 }
 
 void AttachDLL4() {
+	bool Bonkers = false;
 	std::wstring DLLName = Convertion(DLL4);
 	Sleep(Timer4 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
@@ -110,6 +114,7 @@ void AttachDLL4() {
 }
 
 void AttachDLL5() {
+	bool Bonkers = false;
 	std::wstring DLLName = Convertion(DLL5);
 	Sleep(Timer5 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
@@ -124,6 +129,7 @@ void AttachDLL5() {
 }
 
 void AttachDLL6() {
+	bool Bonkers = false;
 	std::wstring DLLName = Convertion(DLL6);
 	Sleep(Timer6 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
@@ -138,6 +144,7 @@ void AttachDLL6() {
 }
 
 void AttachDLL7() {
+	bool Bonkers = false;
 	std::wstring DLLName = Convertion(DLL7);
 	Sleep(Timer7 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
@@ -152,6 +159,7 @@ void AttachDLL7() {
 }
 
 void AttachDLL8() {
+	bool Bonkers = false;
 	std::wstring DLLName = Convertion(DLL8);
 	Sleep(Timer8 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
@@ -166,6 +174,7 @@ void AttachDLL8() {
 }
 
 void AttachDLL9() {
+	bool Bonkers = false;
 	std::wstring DLLName = Convertion(DLL9);
 	Sleep(Timer9 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);
@@ -180,6 +189,7 @@ void AttachDLL9() {
 }
 
 void AttachDLL10() {
+	bool Bonkers = false;
 	std::wstring DLLName = Convertion(DLL10);
 	Sleep(Timer10 * 1000);
 	wcsncpy_s(DLLPath, DLLName.c_str(), _countof(DLLPath) - 1);

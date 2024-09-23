@@ -8,10 +8,11 @@
 
 namespace Clock_M {
 
-	int Power_Level[] = { Second, Minute, Hour };
-	bool Prefixes[] = { Pre_Second, Pre_Minute, Pre_Hour, Pre_Day, Pre_Month };
-	bool Pre_Clocks[] = { Pre_Month, Pre_Day, Pre_Hour, Pre_Minute, Pre_Second };
-	int Clocks[] = { Month, Day, Hour, Minute, Second };
+	int* Calendar_Vars[] = { &Day, &Minute, &Year };
+	int* Clock_Vars[] = { &Second, &Minute, &Hour };
+	//bool Prefixes[] = { Pre_Second, Pre_Minute, Pre_Hour, Pre_Day, Pre_Month };
+	bool* Pre_Clocks[] = { &Pre_Month, &Pre_Day, &Pre_Hour, &Pre_Minute, &Pre_Second };
+	int* Clocks[] = { &Month, &Day, &Hour, &Minute, &Second };
 
 	void InitCounter() {
 		std::ofstream Log(COUNTER_Path);
@@ -23,10 +24,7 @@ namespace Clock_M {
 	}
 
 	bool Is_Leap_Year(int Year) {
-		if ((Year % 4 == 0 && Year % 100 != 0) || Year % 400 == 0) {
-			return true;
-		}
-		return false;
+		return ((Year % 4 == 0 && Year % 100 != 0) || Year % 400 == 0);
 	}
 
 	std::string TS(const int& I) { // To-String (TS)
@@ -52,20 +50,25 @@ namespace Clock_M {
 	}
 
 	void Reset_Int(int Power, bool Clock) {
-		Clock = (Clock ? (Power_Level[0] = Second, Power_Level[1] = Minute, Power_Level[2] = Hour) : (Power_Level[0] = Day, Power_Level[1] = Month, Power_Level[2] = Year));
 		for (int i = 0; i < Power; ++i) {
-			Power_Level[i] = (Clock ? 0 : 1);
-			printf((std::to_string(Power) + " - Power_Level | Clock = " + (Clock ? "True" : "False") + "\n\n\n").c_str());
+			switch (Clock) {
+			case true:
+				*Clock_Vars[i] = 0;
+				break;
+			case false:
+				*Calendar_Vars[i] = 1;
+				break;
+			}
 		}
 	}
 	
 	void Tick() {
-		Prefixes[0] = Pre_Second, Prefixes[1] = Pre_Minute, Prefixes[2] = Pre_Hour, Prefixes[3] = Pre_Day, Prefixes[4] = Pre_Month;
+		/*Prefixes[0] = Pre_Second, Prefixes[1] = Pre_Minute, Prefixes[2] = Pre_Hour, Prefixes[3] = Pre_Day, Prefixes[4] = Pre_Month;
 		Pre_Clocks[0] = Pre_Month, Pre_Clocks[1] = Pre_Day, Pre_Clocks[2] = Pre_Hour, Pre_Clocks[3] = Pre_Minute, Pre_Clocks[4] = Pre_Second;
 		Clocks[0] = Month, Clocks[1] = Day, Clocks[2] = Hour, Clocks[3] = Minute, Clocks[4] = Second;
 		CounterLogger("Prefixes: " + std::to_string(Pre_Second) + std::to_string(Pre_Minute) + std::to_string(Pre_Hour) + std::to_string(Pre_Day) + std::to_string(Pre_Month));
 		CounterLogger("Pre_Clocks: " + std::to_string(Pre_Month) + std::to_string(Pre_Day) + std::to_string(Pre_Hour) + std::to_string(Pre_Minute) + std::to_string(Pre_Second));
-		CounterLogger("Clocks: " + std::to_string(Month) + std::to_string(Day) + std::to_string(Hour) + std::to_string(Minute) + std::to_string(Second));
+		CounterLogger("Clocks: " + std::to_string(Month) + std::to_string(Day) + std::to_string(Hour) + std::to_string(Minute) + std::to_string(Second));*/
 		Sleep(1 * 1000);
 	}
 
@@ -98,12 +101,12 @@ namespace Clock_M {
 		Minute = std::stoi(Stream::Minute.str());
 		Second = std::stoi(Stream::Second.str());
 
-		Pre_Clocks[0] = Pre_Month, Pre_Clocks[1] = Pre_Day, Pre_Clocks[2] = Pre_Hour, Pre_Clocks[3] = Pre_Minute, Pre_Clocks[4] = Pre_Second;
-		Clocks[0] = Month, Clocks[1] = Day, Clocks[2] = Hour, Clocks[3] = Minute, Clocks[4] = Second;
+		//Pre_Clocks[0] = Pre_Month, Pre_Clocks[1] = Pre_Day, Pre_Clocks[2] = Pre_Hour, Pre_Clocks[3] = Pre_Minute, Pre_Clocks[4] = Pre_Second;
+		//Clocks[0] = Month, Clocks[1] = Day, Clocks[2] = Hour, Clocks[3] = Minute, Clocks[4] = Second;
 
 		for (int i = 0; i < 4; ++i) {
-			if (Clocks[i] < 10) {
-				Pre_Clocks[i] = true;
+			if (*Clocks[i] < 10) {
+				*Pre_Clocks[i] = true;
 				CounterLogger("Pre_Clocks[" + std::to_string(i) + "] = true;\n");
 			}
 		}
@@ -129,8 +132,8 @@ namespace Clock_M {
 			std::string G_Second;
 		}
 
-		std::string S = "/";
-		std::string C = ":";
+		const std::string S = "/";
+		const std::string C = ":";
 		//bool Pre_Clocks[] = { Pre_Month, Pre_Day, Pre_Hour, Pre_Minute, Pre_Second };
 		//int Clocks[] = { Month, Day, Hour, Minute, Second };
 
@@ -175,8 +178,8 @@ namespace Clock_M {
 			}
 
 			for (int i = 0; i < 4; ++i) {
-				if (Clocks[4] < 10) {
-					Pre_Clocks[i] = true;
+				if (*Clocks[i] < 10) {
+					*Pre_Clocks[i] = true;
 				}
 			}
 
