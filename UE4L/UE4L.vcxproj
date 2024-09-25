@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Clock\Clock.cpp" />
     <ClCompile Include="Debugger\Debugger.cpp" />
     <ClCompile Include="Deprecated.h" />
     <ClCompile Include="dllmain.cpp" />
@@ -29,8 +28,6 @@
     <ClCompile Include="Threads\Threads.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Clock\Clock.h" />
-    <ClInclude Include="Clock\Clock_P.h" />
     <ClInclude Include="Debugger\Debugger.h" />
     <ClInclude Include="global.h" />
     <ClInclude Include="Parsing\parsing.h" />

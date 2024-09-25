@@ -3,9 +3,6 @@
   <ItemGroup>
     <ClCompile Include="Deprecated.h" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="Clock\Clock.cpp">
-      <Filter>Clock</Filter>
-    </ClCompile>
     <ClCompile Include="Debugger\Debugger.cpp">
       <Filter>Debugger</Filter>
     </ClCompile>
@@ -23,12 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Clock\Clock_P.h">
-      <Filter>Clock</Filter>
-    </ClInclude>
-    <ClInclude Include="Clock\Clock.h">
-      <Filter>Clock</Filter>
-    </ClInclude>
     <ClInclude Include="Debugger\Debugger.h">
       <Filter>Debugger</Filter>
     </ClInclude>
@@ -46,9 +37,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Clock">
-      <UniqueIdentifier>{bff5d080-85fe-4127-b585-ba4b39db22a3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Debugger">
       <UniqueIdentifier>{081b282c-0796-49f4-ad08-cc03cf73896e}</UniqueIdentifier>
     </Filter>

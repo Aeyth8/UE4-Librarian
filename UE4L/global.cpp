@@ -11,23 +11,6 @@ std::wstring LOG_Path;
 std::wstring COUNTER_Path;
 std::wstring Directory_Str;
 
-// Clock Variables ------>
-bool Live_Clock = true;
-bool Military_Time = false;
-// If Separate_Values is true, then these G_ variables will be utilized, the reason for it being a choice is that these variables will dynamically change every second if Live_Clock is true.
-bool Separate_Values = true;
-std::string G_Year;
-std::string G_Month;
-std::string G_Day; // G'Day Mate!
-std::string G_Hour;
-std::string G_Minute;
-std::string G_Second;
-
-std::string Full_Date; // This will be a concatenation of all the variables combined into a singular string, as a heads up, {P} stands for Prefix, which may or may not exist depending on the number.
-                       // The format is : {P}Month/{P}Day/Year {P}Hour:{P}Minute:{P}Second Meridiem  
-                       // For a better understanding of how the prefixes work, here is an example if a prefix is valid : 01/04/2029 08:53:05 PM
-                       //                                                                       If a prefix is invalid : 11/15/2032 10:59:57 AM
-
 //Set 11 Global Strings for DLLs simply because I don't know the easier way and I'm too tired ------>
 std::string DLL0 = "Null";
 std::string DLL1 = "Null";
@@ -81,12 +64,8 @@ bool D9 = false;
 bool D10 = false;
 
 // Parsing Vars
-bool HookWarning = true;
 bool BypassSE = false;
 bool BypassIF = false;
-std::wstring LoadedLibraries = L"";
-int Hourglass = 1;
-int LibraryCt = 0;
 
 // Converts a normal string into a wide string
 std::wstring Convertion(const std::string& narrowStr) {

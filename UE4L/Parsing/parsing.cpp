@@ -90,7 +90,7 @@ bool IsValidTimer(const std::string& value, const std::string& key) {
 		Testing = std::stoi(value);
 	}
 
-	catch (const std::exception& e) {
+	catch (const std::exception) {
 		DebugLog("IsValidTimer", key + " | FALSE | Error Type: FAILED STRING CONVERTION");
 		return false;
 	}
@@ -121,7 +121,6 @@ void Initialize() {
 	COUNTER_Path = DirectoryPath + L"CountdownTester.log";
 	Directory_Str = DirectoryPath;
 
-	Clock_M::InitClock();
 	InitLog(LOG_Path);
 	DebugLog("INFO", Revertion(ShippingEXE));
 	DebugLog("INFO", "The Global Base Address [GBA] is " + std::to_string(GBA));

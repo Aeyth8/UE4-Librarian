@@ -1,6 +1,5 @@
 #include "Debugger.h"
 #include "../global.h"
-#include "../Clock/Clock_P.h"
 
 std::string RetrieveTime() { // Retrieves the current time into a permanent stamp, then after initialized places the current time into a constantly changed variable.
 	auto now = std::chrono::system_clock::now();
@@ -25,14 +24,14 @@ std::string RetrieveTime() { // Retrieves the current time into a permanent stam
 
 void InitLog(const std::wstring& Path) {
 	std::ofstream Log(Path);
-	Log << "[" + Full_Date + "] " << "[INITIALIZED] - UE4 Librarian has been successfully attached.\n";
+	Log << "[" + RetrieveTime() + "] " << "[INITIALIZED] - UE4 Librarian has been successfully attached.\n";
 	Log.close();
 }
 
 void DebugLog(std::string LogType, std::string Text) {
 	std::string Category = "[" + LogType + "] - ";
 	std::ofstream Log(LOG_Path, std::ios::app);
-	Log << "[" + Full_Date + "] " << Category << Text + "\n";
+	Log << "[" + RetrieveTime() + "] " << Category << Text + "\n";
 }
 
 void User_Exit(const std::string error) {

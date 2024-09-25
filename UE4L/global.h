@@ -30,18 +30,6 @@ extern std::wstring LOG_Path;
 extern std::wstring COUNTER_Path;
 extern std::wstring Directory_Str;
 
-extern bool Live_Clock;
-extern bool Military_Time;
-
-extern bool Separate_Values;
-extern std::string G_Year;
-extern std::string G_Month;
-extern std::string G_Day;
-extern std::string G_Hour;
-extern std::string G_Minute;
-extern std::string G_Second;
-extern std::string Full_Date;
-
 extern std::string DLL0;
 extern std::string DLL1;
 extern std::string DLL2;
@@ -90,12 +78,8 @@ extern bool D8;
 extern bool D9;
 extern bool D10;
 
-extern bool HookWarning;
 extern bool BypassSE;
 extern bool BypassIF;
-extern std::wstring LoadedLibraries;
-extern int Hourglass;
-extern int LibraryCt;
 
 extern std::wstring Convertion(const std::string& narrowStr);
 extern std::string Revertion(const std::wstring& wideStr);
