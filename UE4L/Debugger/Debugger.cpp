@@ -25,14 +25,14 @@ std::string RetrieveTime() { // Retrieves the current time into a permanent stam
 
 void InitLog(const std::wstring& Path) {
 	std::ofstream Log(Path);
-	Log << "[" + RetrieveTime() + "] " << "[INITIALIZED] - UE4 Librarian has been successfully attached.\n";
+	Log << "[" + Full_Date + "] " << "[INITIALIZED] - UE4 Librarian has been successfully attached.\n";
 	Log.close();
 }
 
 void DebugLog(std::string LogType, std::string Text) {
 	std::string Category = "[" + LogType + "] - ";
 	std::ofstream Log(LOG_Path, std::ios::app);
-	Log << "[" + RetrieveTime() + "] " << Category << Text + "\n";
+	Log << "[" + Full_Date + "] " << Category << Text + "\n";
 }
 
 void User_Exit(const std::string error) {

@@ -19,6 +19,7 @@ namespace Clock_M//anipulation
 	int Last_Day(const int& Month);
 	void Reset_Int(int Power, bool Clock);
 	void Tick();
+	void Update_Time();
 	void InitClock();
 	void Constant_Clock();
 	
