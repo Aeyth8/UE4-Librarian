@@ -39,6 +39,15 @@ void User_Exit(const std::string error) {
 	// 'error' shows the name of the function that the MessageBox appeared in.
 }
 
+void Unreal_Logger() {
+	DebugLog("UE-LOGGER", "Allocating Console Outputs -> " + Revertion(ShippingEXE) + ".UE4.log");
+	AllocConsole();
+	FILE* Console = new FILE();
+	freopen_s(&Console, Revertion(CONSOLE_Path).c_str(), "w", stdout);
+	freopen_s(&Console, Revertion(CONSOLE_Path).c_str(), "r", stdin);
+}
+//     UnrealEngine/Engine/Source/Runtime/Core/Public/Logging/LogTrace.h 
+//	   Maybe the source will help me find out how the log is stored dynamically
 
 
 /// REMINDER TO SELF:

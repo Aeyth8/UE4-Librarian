@@ -22,12 +22,14 @@ namespace Global
 	static MODULEINFO info;
 }
 extern bool Initialized;
+extern bool Log_Unreal;
 extern uintptr_t GBA;
 extern std::string Timestamped;
 extern std::string Timestamp;
+extern std::wstring ShippingEXE;
 extern std::wstring INI_Path;
 extern std::wstring LOG_Path;
-extern std::wstring COUNTER_Path;
+extern std::wstring CONSOLE_Path;
 extern std::wstring Directory_Str;
 
 extern std::string DLL0;

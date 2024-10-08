@@ -106,7 +106,6 @@ void Initialize() {
 
 	std::wstring DirectoryPath(EXEPath);
 	size_t EndDL = DirectoryPath.find_last_of(L"\\/");
-	std::wstring ShippingEXE;
 
 	if (EndDL != std::wstring::npos) {
 		// Remove the filename part to get the directory path
@@ -117,17 +116,15 @@ void Initialize() {
 	GBA = uintptr_t(GetModuleHandleW(ShippingEXE.c_str()));
 	INI_Path = DirectoryPath + L"DList.ini";
 	LOG_Path = DirectoryPath + L"UE4-Librarian.log";
-	COUNTER_Path = DirectoryPath + L"CountdownTester.log";
+	CONSOLE_Path = DirectoryPath + (ShippingEXE + L".UE4L.log");
 	Directory_Str = DirectoryPath;
 
 	InitLog(LOG_Path);
 	DebugLog("INFO", Revertion(ShippingEXE));
 	DebugLog("INFO", "The Global Base Address [GBA] is " + std::to_string(GBA));
 	Parse_INI(INI_Path);
+	Log_Unreal ? Unreal_Logger() : (void)0;
 }
-
-
-
 
 void Parse_INI(const std::wstring& Path) {
 	std::ifstream INI(Path);
@@ -168,7 +165,9 @@ void Parse_INI(const std::wstring& Path) {
 		std::string value = line.substr(pos + 1);
 	
 		
-		
+		if (section == "Setup") {
+			Log_Unreal = (key == "UnrealLogToWin64" && value == "True");
+		}
 		if (section == "GUI") {
 			BypassSE = (key == "BypassSyntaxError" && value == "True");
 			BypassIF = (key == "BypassIntegrityFailure" && value == "True");
@@ -192,7 +191,7 @@ void Parse_INI(const std::wstring& Path) {
 
 void Create_INI(const std::wstring& Path) {
 	std::ofstream INI(Path);
-	INI << "[GUI]\nBypassSyntaxError=False\nBypassIntegrityFailure=False\n\n[DLL]\nDLL0=PutYourDLLHere.dll\nDLL1=PutYourDLLHere.dll\nDLL2=PutYourDLLHere.dll\nDLL3=PutYourDLLHere.dll\nDLL4=PutYourDLLHere.dll\nDLL5=PutYourDLLHere.dll\nDLL6=PutYourDLLHere.dll\nDLL7=PutYourDLLHere.dll\nDLL8=PutYourDLLHere.dll\nDLL9=PutYourDLLHere.dll\nDLL10=PutYourDLLHere.dll\n\n[Timer]\nTimer0=JustPutANumberInSeconds\nTimer1=JustPutANumberInSeconds\nTimer2=JustPutANumberInSeconds\nTimer3=JustPutANumberInSeconds\nTimer4=JustPutANumberInSeconds\nTimer5=JustPutANumberInSeconds\nTimer6=JustPutANumberInSeconds\nTimer7=JustPutANumberInSeconds\nTimer8=JustPutANumberInSeconds\nTimer9=JustPutANumberInSeconds\nTimer10=JustPutANumberInSeconds\n\n";
+	INI << "[Setup]\nUnrealLogToWin64=True\n\n[GUI]\nBypassSyntaxError=False\nBypassIntegrityFailure=False\n\n[DLL]\nDLL0=PutYourDLLHere.dll\nDLL1=PutYourDLLHere.dll\nDLL2=PutYourDLLHere.dll\nDLL3=PutYourDLLHere.dll\nDLL4=PutYourDLLHere.dll\nDLL5=PutYourDLLHere.dll\nDLL6=PutYourDLLHere.dll\nDLL7=PutYourDLLHere.dll\nDLL8=PutYourDLLHere.dll\nDLL9=PutYourDLLHere.dll\nDLL10=PutYourDLLHere.dll\n\n[Timer]\nTimer0=JustPutANumberInSeconds\nTimer1=JustPutANumberInSeconds\nTimer2=JustPutANumberInSeconds\nTimer3=JustPutANumberInSeconds\nTimer4=JustPutANumberInSeconds\nTimer5=JustPutANumberInSeconds\nTimer6=JustPutANumberInSeconds\nTimer7=JustPutANumberInSeconds\nTimer8=JustPutANumberInSeconds\nTimer9=JustPutANumberInSeconds\nTimer10=JustPutANumberInSeconds\n\n";
 	INI.close();
 	const int result = MessageBox(NULL, L"'DList.ini' was not found in the binaries, one has been created.", L"Relaunch The Game", MB_OK | MB_SYSTEMMODAL);
 	switch (result)
